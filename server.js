@@ -1,12 +1,18 @@
 var express = require("express");
+const bodyParser = require("body-parser");
+const exphbs = require("express-handlebars");
 
 var app = express();
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
+//require models for syncing
+const db = require('./models');
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.text());
 
 var exphbs = require("express-handlebars");
 
